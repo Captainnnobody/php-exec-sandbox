@@ -14,3 +14,4 @@ sudo rm /var/www/html/index.html
 sudo systemctl restart apache2
 
 echo "Installation complete. Access the PHP Exec Sandbox at http://your-server-ip/ or http://localhost/"
+
