@@ -1,111 +1,40 @@
 # PHP Exec Sandbox
 
-PHP Exec Sandbox is a web-based tool for securely executing and testing PHP code snippets. It provides a controlled environment to run PHP scripts and view their output.
-
-## Features
-
-- Execute PHP code securely.
-- View the output of executed code.
-- Set a timeout for code execution.
+PHP Exec Sandbox is a simple web application that allows you to test PHP code in a secure and controlled environment. It provides a web-based interface where you can enter PHP code, and it will execute the code and display the output.
 
 ## Installation
 
-Follow these steps to set up PHP Exec Sandbox on your Linux machine.
+### Clone Repository
 
-### Prerequisites
-
-- PHP (>= 7.2)
-- Web server (e.g., Apache or Nginx)
-- Git
-
-### Clone the Repository
-
+**Clone the Repository:**
 ```bash
 git clone https://github.com/Captainnnobody/php-exec-sandbox.git
 cd php-exec-sandbox
 ```
-
-### Configure Web Server
-## Apache
-
-Make sure you have Apache installed.
+### Automatic Installation (Bash Script):
 ```
-sudo apt-get update
-sudo apt-get install apache2
+chmod +x install_php_exec_sandbox.sh
+./install_php_exec_sandbox.sh
 ```
 
-### Create a virtual host configuration file:
+### Manual Installation:
+
+Copy PHP File to Web Server Directory:
 ```
-sudo nano /etc/apache2/sites-available/php-exec-sandbox.conf
+sudo cp phpexecsandbox.php /var/www/html/index.php
+```
+Delete Default index.html File:
+```
+sudo rm /var/www/html/index.html
 ```
 
-### Add the following configuration:
-```
-<VirtualHost *:80>
-    ServerAdmin webmaster@localhost
-    DocumentRoot /path/to/php-exec-sandbox
+### Access the PHP Exec Sandbox
+Open your browser and go to http://localhost/ to access the PHP Exec Sandbox.
 
-    <Directory /path/to/php-exec-sandbox>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
 
-### Enable the virtual host:
-```
-sudo a2ensite php-exec-sandbox.conf
-sudo systemctl restart apache2
-```
-
-## Nginx
-
-Make sure you have Nginx installed.
-```
-sudo apt-get update
-sudo apt-get install nginx
-```
-
-### Create a server block configuration file:
-```
-sudo nano /etc/nginx/sites-available/php-exec-sandbox
-```
-
-### Add the following configuration:
-```
-server {
-    listen 80;
-    server_name your-domain.com;
-    root /path/to/php-exec-sandbox;
-    index index.php;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}
-```
-### Create a symbolic link:
-```
-sudo ln -s /etc/nginx/sites-available/php-exec-sandbox /etc/nginx/sites-enabled/
-sudo systemctl restart nginx
-```
-### Set Up Permissions
-Make sure the web server has the necessary permissions:
-```
-sudo chown -R www-data:www-data /path/to/php-exec-sandbox
-sudo chmod -R 755 /path/to/php-exec-sandbox
-```
-
-### Access the Application
-Open your web browser and navigate to http://your-domain.com.
+## Usage
+1. Open the PHP Exec Sandbox in your web browser.
+2. Enter your PHP code in the provided textarea.
+3. Click the "Run Code" button to execute the code.
+4. View the output in the adjacent panel.
