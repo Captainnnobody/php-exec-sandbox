@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Copyright notice in the footer -->
     <footer>
-        &copy; <?php echo date('Y'); ?> Captain. All rights reserved.
+        &copy; <?php echo date('Y'); ?> Captain Nobody.
     </footer>
 </body>
 </html>
