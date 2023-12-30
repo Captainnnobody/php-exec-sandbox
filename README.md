@@ -21,7 +21,7 @@ Follow these steps to set up PHP Exec Sandbox on your Linux machine.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/php-exec-sandbox.git
+git clone https://github.com/Captainnnobody/php-exec-sandbox.git
 cd php-exec-sandbox
 ```
 
